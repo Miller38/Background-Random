@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- metadatos -->
+    <meta charset="UTF-8">
+    <meta name="description" content="Background generated ramdon">
+    <meta name="author" content="Miller Gutierrez">
+    <meta name="keywords" content="Html, css, javascript">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- titlte -->
+    <title>Background Ramdon</title>
+    <!-- link css -->
+    <link rel="stylesheet" href="style.css">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="image/HTML_icon.ico " type="image/x-icon">
+    
+</head>
+<body>
+    <div class="container">        
+        <button  onclick="generate();">Generate</button>
+        <button onclick="circle();generate();" class="circleBtn">Circle | Square</button>    
+    </div>
+    <!-- script animacion -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        let container = document.querySelector('.container');
+        for (var i=0; i<=80; i++){
+            let blocks = document.createElement('div');
+            blocks.classList.add('block');
+            container.appendChild(blocks);
+        }
+
+        function circle(){
+            let circleBtn = document.querySelector('.circlebtn');
+            container.classList.toggle('circle');
+        }
+
+        function generate(){
+            anime({
+                targets :'.block',
+                translateX : function(){
+                    return anime.random(-700,700);
+                },
+                translateY : function(){
+                    return anime.random(-500,500);
+                },
+                scale : function(){
+                    return anime.random(1,5);
+                }
+            })
+        }
+        generate()
+    </script>
+</body>
+</html>
